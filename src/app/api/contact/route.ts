@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Initialize Resend with your API key
-// You will need to add RESEND_API_KEY to your .env.local file
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
+    // Resend ko yahan initialize karo (andar)
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const body = await request.json();
     const { name, email, subject, message } = body;
 
@@ -18,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact Form <onboarding@resend.dev>', // Update with verified domain if you have one
+      from: 'Portfolio Contact Form <onboarding@resend.dev>',
       to: ['socialme45678@gmail.com'],
       subject: `New Portfolio Message: ${subject || 'No Subject'}`,
       replyTo: email,
