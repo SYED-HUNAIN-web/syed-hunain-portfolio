@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans, "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  --font-display: var(--font-display, "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 0 85% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 12%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 75% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 85% 50%;
+    --radius: 0.85rem;
+    --neon-red: 0 85% 50%;
+    --neon-red-glow: 0 90% 55%;
+    --gradient-tech: linear-gradient(135deg, hsl(0, 85%, 52%) 0%, hsl(350, 90%, 42%) 100%);
+    --gradient-red: linear-gradient(135deg, hsl(0, 85%, 52%) 0%, hsl(350, 90%, 42%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 2%) 0%, hsl(0, 5%, 6%) 100%);
+  }
+
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 96%;
+    --card: 0 5% 5%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 5% 4%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 85% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 5% 10%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 5% 12%;
+    --muted-foreground: 0 0% 58%;
+    --accent: 0 75% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 5% 12%;
+    --input: 0 5% 12%;
+    --ring: 0 85% 50%;
+    --neon-red: 0 85% 50%;
+    --neon-red-glow: 0 90% 55%;
+    --gradient-tech: linear-gradient(135deg, hsl(0, 85%, 52%) 0%, hsl(350, 90%, 42%) 100%);
+    --gradient-red: linear-gradient(135deg, hsl(0, 85%, 52%) 0%, hsl(350, 90%, 42%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 2%) 0%, hsl(0, 5%, 6%) 100%);
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Custom Utility Classes */
+.text-gradient {
+  background-image: var(--gradient-red) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.neon-text {
+  text-shadow: 0 0 10px hsl(var(--neon-red) / 0.8), 0 0 20px hsl(var(--neon-red) / 0.5), 0 0 30px hsl(var(--neon-red) / 0.3);
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px hsl(var(--neon-red) / 0.5), 0 0 40px hsl(var(--neon-red) / 0.3), 0 0 60px hsl(var(--neon-red) / 0.1);
+}
+
+.bg-grid {
+  background-image: linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(ellipse at center, hsl(var(--neon-red) / 0.15) 0%, transparent 70%);
+}
+
+.bg-gradient-red,
+.bg-gradient-tech {
+  background-image: var(--gradient-red) !important;
+  color: #ffffff !important;
+}
+
+/* Animations */
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px hsl(var(--neon-red) / 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 40px hsl(var(--neon-red) / 0.8);
+  }
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-10px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-20px) translateX(20px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-float-particle {
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Hide native cursor only when custom cursor is active on fine pointers */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
