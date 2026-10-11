@@ -15,7 +15,13 @@ export default function Testimonials() {
 
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/25 mb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-primary">
               Testimonials
@@ -27,13 +33,17 @@ export default function Testimonials() {
           <p className="text-muted-foreground text-base sm:text-lg">
             Feedback from partners, clients, and collaborators who have experienced my dedication to visual excellence and performance.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {TESTIMONIALS_DATA.map((t) => (
+          {TESTIMONIALS_DATA.map((t, index) => (
             <motion.div
               key={t.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.15 }}
+              viewport={{ once: true, margin: "-80px" }}
               whileHover={{ y: -6 }}
               className="p-7 md:p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-primary/5"
             >
