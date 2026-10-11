@@ -82,7 +82,13 @@ export default function Contact() {
 
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/25 mb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-primary">
               Get In Touch
@@ -94,12 +100,18 @@ export default function Contact() {
           <p className="text-muted-foreground text-base sm:text-lg">
             Have a project in mind? Let&apos;s discuss how we can bring your ideas to life with high performance and cinematic flair.
           </p>
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: Contact Info */}
-          <div className="lg:col-span-5 space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:col-span-5 space-y-8"
+          >
             <div>
               <h3 className="text-2xl font-display font-extrabold text-foreground mb-3">
                 Contact Information
@@ -148,10 +160,16 @@ export default function Contact() {
               </svg>
               Chat on WhatsApp
             </motion.a>
-          </div>
+          </motion.div>
 
           {/* Right: Contact Form */}
-          <div className="lg:col-span-7 bg-card border border-border rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:col-span-7 bg-card border border-border rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl"
+          >
             {isSubmitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -266,7 +284,7 @@ export default function Contact() {
                 </motion.button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
