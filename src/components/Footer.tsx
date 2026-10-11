@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
@@ -13,7 +14,13 @@ export default function Footer() {
   return (
     <footer className="py-10 border-t border-border bg-card/60 relative z-10">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-40px" }}
+          className="flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           {/* Logo */}
           <a
             href="#home"
@@ -44,7 +51,7 @@ export default function Footer() {
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
