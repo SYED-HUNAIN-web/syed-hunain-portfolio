@@ -17,7 +17,13 @@ export default function Projects() {
 
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/25 mb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-primary">
               Portfolio
@@ -29,13 +35,17 @@ export default function Projects() {
           <p className="text-muted-foreground text-base sm:text-lg">
             A collection of projects showcasing my expertise in web development, interactive user interfaces, and modern full-stack web applications.
           </p>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {PROJECTS_DATA.map((project) => (
+          {PROJECTS_DATA.map((project, index) => (
             <motion.div
               key={project.id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -8 }}
               onClick={() => setSelectedProject(project)}
               className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/50 cursor-pointer transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-primary/10 flex flex-col"
