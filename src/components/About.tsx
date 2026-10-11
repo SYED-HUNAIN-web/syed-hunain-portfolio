@@ -22,7 +22,13 @@ export default function About() {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Portrait with Orbital Rings & Floating Badges */}
-          <div className="lg:col-span-5 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center"
+          >
             <div className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96">
               {/* Outer Slow Rotating Ring */}
               <motion.div
@@ -79,10 +85,16 @@ export default function About() {
                 <span>✨</span> Creative
               </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Bio & Feature Cards */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6"
+          >
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/25">
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
@@ -114,9 +126,13 @@ export default function About() {
 
             {/* 4 Feature Cards */}
             <div className="grid grid-cols-2 gap-4 pt-4">
-              {FEATURES.map((item) => (
-                <div
+              {FEATURES.map((item, index) => (
+                <motion.div
                   key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="flex items-center gap-3.5 p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="p-2.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
@@ -125,10 +141,10 @@ export default function About() {
                   <span className="font-semibold text-sm sm:text-base text-foreground">
                     {item.label}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
